@@ -11,4 +11,4 @@ router.route('/issues/mine').get(protect,authorize([Role.SYSADMIN,Role.PROJECTMA
 router.route('/:id').delete(protect, authorize([Role.SYSADMIN,Role.PROJECTMANAGER,Role.USER]), deleteIssue);
 router.route('/:id').patch(protect,authorize([Role.SYSADMIN,Role.PROJECTMANAGER,Role.USER]), UpdateIssue);
 
-export { router as FeedbackRoute };
+export { router as IssuesRoute };

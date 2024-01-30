@@ -5,8 +5,8 @@ import { User } from "../model/user";
 import mongoose from "mongoose";
 import { Project } from "../model/project";
 import { Ipriority, Status } from "../types";
-
 import { Issue } from "../model/Issue";
+
 
 export const IssueService = {
   async CreateIssue(req: Request, res: Response, next: NextFunction) {
@@ -34,7 +34,8 @@ export const IssueService = {
           status: Status.NOTSTARTED,
           description,
           priority: Ipriority.LOW,
-          user: user?._id,
+          createdBy: user?._id,
+          assignedTo:user?._id,
           project: project?._id,
         });
         let result = await issue.save();
@@ -52,10 +53,10 @@ export const IssueService = {
 
   async getIssuesAssignedTOme(req: Request, res: Response, next: NextFunction) {
     try {
-      const user = req.user as UserType;
+      const user = req.user as UserType 
 
-      const result = await Issue.find({
-        assignedTo: mongoose.Types.ObjectId(user?._id),
+      const result  = await Issue.findById({
+        assignedTo: mongoose.Types.ObjectId(user?._id)
       })
         .populate("assignedTo", "-password")
         .sort({ createdAt: -1 });
@@ -146,7 +147,7 @@ export const IssueService = {
         issue!.assignedTo = user._id;
         const result = await issue.save();
         if (result) {
-        return  result.status(200).send({message:"Issue assigned to user successfully"})
+        // return  result.status(200).send({message:"Issue assigned to user successfully"})
         } else {
           console.log("email not sent");
         }

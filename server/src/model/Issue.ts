@@ -4,11 +4,15 @@ const { ObjectId } = Schema.Types;
 export interface IssueDocument extends Document {
   title: string;
   description: string;
+  priority:string
+  dueDate:Date
+  status:string
   createdBy:ObjectId
-  assignedTo:ObjectId
+  assignedTo:ObjectId 
   project:ObjectId
 
 }
+
 
 const IssueSChema = new Schema(
   {

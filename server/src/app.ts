@@ -25,6 +25,7 @@ import { CustomerRoutes } from "./routes/customer";
 import {sendProjectReminder} from './services/project'
 import { sendTaskReminder } from "./services/task";
 import { DefaultRoles } from "./data/DefaultRoles";
+import { IssuesRoute } from "./routes/issue";
 // import { MenuRoutes } from "./routes/MenuRoute";
 const app: Application = express();
 app.use(express.json());
@@ -63,6 +64,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+ app.use('/api/issue',IssuesRoute)
 app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/workspace", workspaceRoutes);
