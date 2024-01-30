@@ -24,6 +24,7 @@ import multer from "multer";
 import { CustomerRoutes } from "./routes/customer";
 import {sendProjectReminder} from './services/project'
 import { sendTaskReminder } from "./services/task";
+import { DefaultRoles } from "./data/DefaultRoles";
 // import { MenuRoutes } from "./routes/MenuRoute";
 const app: Application = express();
 app.use(express.json());
@@ -42,7 +43,8 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 connectDb();
-//destroyData()
+  // DefaultRoles.createDefaultRoles()
+  ///destroyData()
 let event
 sendProjectReminder(event)
 sendTaskReminder(event)

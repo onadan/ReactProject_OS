@@ -14,11 +14,11 @@ const Users: User[] = [
   {
     firstname: "John",
     lastname: "Doe",
-    email: "projectmanager@gmail.com",
-    password: bcrypt.hashSync("@projectmanager254", 12),
+    email: "felexonyango@gmail.com",
+    password: bcrypt.hashSync("@Felex2018", 12),
     role: [
       {
-        _id: Types.ObjectId("644966e4b063a954a811a912"),
+        _id: Types.ObjectId("65b8f34991729a326844ca21"),
         name: "SYSADMIN",
       },
     ],

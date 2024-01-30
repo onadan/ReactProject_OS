@@ -1,6 +1,12 @@
 import { Request, Response, NextFunction } from "express";
 import { Roles } from "../model/roles";
 
+  export   const DEFAULT_ROLES = [
+  { name: 'SYSADMIN', description: 'Administrator with full access' },
+  { name: 'USER', description: 'Regular user with basic access' },
+  // { name: 'PROJECTMANAGER', description:'Project manager  access'}
+ 
+];
 export const RoleService = {
   async CreateRole(req: Request, res: Response, next: NextFunction) {
     try {
@@ -25,6 +31,14 @@ export const RoleService = {
     }
     next();
   },
+
+
+
+
+// Call createDefaultRoles() to create default roles when needed
+// Example: createDefaultRoles();
+
+
   async getAllRoles(req: Request, res: Response, next: NextFunction) {
     try {
       const result = await Roles.find({});
@@ -78,5 +92,21 @@ export const RoleService = {
     next();
   },
 
+  async createDefaultRoles(req:Request, res:Response, next:Function){
+    try {
+      for (const role of DEFAULT_ROLES) {
+        const checkExisting = await Roles.findOne({ name: role.name });
+  
+        if (!checkExisting) {
+          const newRole = await Roles.create(role);
+          console.log(`Created default role: ${newRole.name}`);
+        }
+      }
+  
+      console.log('Default roles creation completed');
+    } catch (err) {
+      console.error('Error creating default roles:', err);
+    }
+  }
   
 };
