@@ -1,10 +1,11 @@
+import SignUp from "./components/auth/signUp"
 
 function App() {
  
   return (
     
       <div className="text-center">
-        <p>Hello Tailwind </p>
+        <SignUp/>
       </div>
     
   )
