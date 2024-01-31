@@ -1,18 +1,25 @@
+import {BrowserRouter as Router,  Route, Routes } from "react-router-dom";
+import { Fragment } from "react";
+import { Home } from "./components/Home";
 
-import Login from "./components/auth/login"
-import SignUp from "./components/auth/signUp"
+import { Footer } from "./components/shared/Footer";
+import { Navbar } from "./components/shared/Navbar";
 
 function App() {
- 
   return (
-    
-      <div className="text-center">
-        <SignUp/>
-        
-        {/* <Login/> */}
-      </div>
-    
-  )
+    <Router>
+        <Fragment>
+          <Navbar>
+            
+          </Navbar>
+          <Routes>
+          {/* <Route path="/" element={<Home />} />
+            <Route component={Routes} />  */}
+          </Routes>
+          <Footer/>
+        </Fragment>
+      </Router>
+  );
 }
 
-export default App
+export default App;
