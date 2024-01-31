@@ -1,9 +1,9 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import {ILogin, Login} from "../../services/auth";
+import {ILogin, login} from "../../services/auth";
 
-const login: React.FC<{}> = () => {
+const Login: React.FC<{}> = () => {
   const validationSchema = Yup.object().shape({
    
     email: Yup.string()
@@ -35,9 +35,10 @@ const login: React.FC<{}> = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={async (values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting,resetForm }) => {
           try {
-            await Login(values);
+            await login(values);
+            resetForm({ values: initialValues });
           } catch (error) {
           } finally {
             setSubmitting(false);
@@ -99,4 +100,4 @@ const login: React.FC<{}> = () => {
   );
 };
 
-export default login;
+export default Login;

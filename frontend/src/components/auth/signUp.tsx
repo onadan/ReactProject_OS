@@ -37,9 +37,10 @@ const SignUp: React.FC<{}> = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
-        onSubmit={async (values, { setSubmitting }) => {
+        onSubmit={async (values, { setSubmitting,resetForm }) => {
           try {
             await signup(values);
+            resetForm({values})
           } catch (error) {
           } finally {
             setSubmitting(false);

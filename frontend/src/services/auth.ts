@@ -24,7 +24,7 @@ export const signup = async (userData: ISignUp) => {
   }
 };
 
-export const Login = async (userData: ILogin) => {
+export const login = async (userData: ILogin) => {
   try {
     const response = await axios.post(`${API_URL}/auth/login`, userData);
     return response.data;

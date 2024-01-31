@@ -1,3 +1,5 @@
+
+import Login from "./components/auth/login"
 import SignUp from "./components/auth/signUp"
 
 function App() {
@@ -6,6 +8,8 @@ function App() {
     
       <div className="text-center">
         <SignUp/>
+        
+        {/* <Login/> */}
       </div>
     
   )
