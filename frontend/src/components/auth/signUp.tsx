@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import signup from "../../services/auth";
+import {ISignUp, signup} from "../../services/auth";
 import * as Yup from "yup";
 const SignUp: React.FC<{}> = () => {
   const validationSchema = Yup.object().shape({
@@ -14,11 +14,12 @@ const SignUp: React.FC<{}> = () => {
       .required("Password is required"),
   });
 
-  const initialValues = {
+  const initialValues:ISignUp = {
     firstname: "",
     lastname: "",
     email: "",
     password: "",
+  
   };
 
   function validateEmail(value: string) {
