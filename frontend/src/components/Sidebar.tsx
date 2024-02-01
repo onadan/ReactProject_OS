@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 import { BsArrowLeftCircle } from 'react-icons/bs'
 // import Logo from '../assets/images/logo.svg'
-import HamburgerButton from './HamburgerMenuButton/HamburgerButton'
+// import HamburgerButton from './HamburgerMenuButton/HamburgerButton'
 import { FaHome, FaProjectDiagram, FaTasks } from 'react-icons/fa'
 import { FaTicketSimple } from 'react-icons/fa6'
 import { VscWorkspaceTrusted } from 'react-icons/vsc'
@@ -71,10 +71,10 @@ const Sidebar = () => {
       </div>
       {/* Mobile Menu */}
       <div className="pt-3">
-        <HamburgerButton
+        {/* <HamburgerButton
           setMobileMenu={setMobileMenu}
           mobileMenu={mobileMenu}
-        />
+        /> */}
       </div>
       <div className="sm:hidden">
         <div
