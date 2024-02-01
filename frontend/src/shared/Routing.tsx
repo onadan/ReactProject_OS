@@ -2,9 +2,9 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { Home } from '../pages/Home'
 import Layout from '../components/Layout'
-import { Tasks } from '../pages/tasks'
-import { Project } from '../pages/project'
-import { Workspace } from '../pages/workspace'
+import { Project } from '../pages/Project'
+import { Tasks } from '../pages/Tasks'
+import { Workspace } from '../pages/Workspace'
 
 export const Routing = () => {
   return (
@@ -24,6 +24,8 @@ export const Routing = () => {
                 </Routes>
             </Layout>
         </BrowserRouter>
+
+        
        
       
     </div>
