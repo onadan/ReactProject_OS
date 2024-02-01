@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = "http://localhost:3001/api";
 
 export interface ISignUp {
   firstname: string;
@@ -27,9 +27,11 @@ export const signup = async (userData: ISignUp) => {
 export const login = async (userData: ILogin) => {
   try {
     const response = await axios.post(`${API_URL}/auth/login`, userData);
-    return response.data;
+    console.log(response.data, "test  data");
+    const access = response.data.result.token;
+
+    localStorage.setItem("token", access);
   } catch (error) {
-    console.error("Login failed:", error);
     throw error;
   }
 };

@@ -1,4 +1,3 @@
-import React from 'react'
 import Toggle from '../components/ThemeToggle'
 
 const Navbar = () => {
