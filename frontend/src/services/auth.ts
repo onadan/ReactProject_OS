@@ -40,6 +40,7 @@ export const logout =async()=>{
     localStorage.removeItem("token");
 
   }
+  
   catch(error){
 
   }
