@@ -1,24 +1,21 @@
-import {BrowserRouter as Router,  Route, Routes } from "react-router-dom";
-import { Fragment } from "react";
-import { Home } from "./components/Home";
+import { BrowserRouter as Router, Route, Routes, BrowserRouter } from "react-router-dom";
 
-import { Footer } from "./components/shared/Footer";
-import { Navbar } from "./components/shared/Navbar";
+import { Home } from "./pages/Home";
+import Layout from "./components/Layout";
 
 function App() {
   return (
-    <Router>
-        <Fragment>
-          <Navbar>
-            
-          </Navbar>
-          <Routes>
-          {/* <Route path="/" element={<Home />} />
-            <Route component={Routes} />  */}
-          </Routes>
-          <Footer/>
-        </Fragment>
-      </Router>
+    <BrowserRouter>
+            <Layout>
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    {/* <Route path='/dashboard' element={<Dashboard />} />
+                    <Route path='/course' element={<Course />} />
+                    <Route path='/profile' element={<Profile />} />
+                    <Route path='/login' element={<Login />} /> */}
+                </Routes>
+            </Layout>
+        </BrowserRouter>
   );
 }
 
