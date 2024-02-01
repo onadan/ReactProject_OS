@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 
 import Sidebar from './Sidebar'
-import Navbar from './shared/Navbar'
+import Navbar from '../shared/Navbar'
 
 const Layout = ({ children }: { children: ReactNode }) => {
     return (

@@ -40,7 +40,7 @@ const Sidebar = () => {
             {/* <img src={Logo} alt='' className='pl-2' /> */}
             {open && (
               <span className='text-xl font-medium whitespace-nowrap dark:text-white'>
-                Goal Quest
+                Project X.
               </span>
             )}
           </div>
@@ -51,7 +51,7 @@ const Sidebar = () => {
             <Link to={menu.path} key={index}>
               <li
                 className={`flex items-center gap-x-6 p-3 text-base font-normal rounded-lg cursor-pointer dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700
-                        ${menu.gap ? 'mt-9' : 'mt-2'} ${
+                        ${menu?.gap ? 'mt-9' : 'mt-2'} ${
                   location.pathname === menu.path &&
                   'bg-gray-200 dark:bg-gray-700'
                 }`}
