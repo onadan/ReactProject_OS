@@ -2,6 +2,9 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import {ISignUp, signup} from "../../services/auth";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+
+
 const SignUp: React.FC<{}> = () => {
   const validationSchema = Yup.object().shape({
     firstname: Yup.string().required("First Name is required"),
@@ -13,6 +16,9 @@ const SignUp: React.FC<{}> = () => {
       .min(6, "Password must be at least 6 characters")
       .required("Password is required"),
   });
+
+  
+
 
   const initialValues:ISignUp = {
     firstname: "",
@@ -31,6 +37,8 @@ const SignUp: React.FC<{}> = () => {
     }
     return error;
   }
+  let navigate = useNavigate();
+  
 
   return (
     <div className="flex items-center justify-center h-screen w-full">
@@ -41,6 +49,8 @@ const SignUp: React.FC<{}> = () => {
           try {
             await signup(values);
             resetForm({values})
+ 
+            navigate('/auth/login');
           } catch (error) {
           } finally {
             setSubmitting(false);
