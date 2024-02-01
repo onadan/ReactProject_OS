@@ -5,6 +5,7 @@ import Layout from '../components/Layout'
 import { Project } from '../pages/Project'
 import { Tasks } from '../pages/Tasks'
 import { Workspace } from '../pages/Workspace'
+import { Tickets } from '../pages/Tickets'
 
 
 export const Routing = () => {
@@ -18,11 +19,9 @@ export const Routing = () => {
                     <Route path='/tasks'element={<Tasks />} />
                     <Route path='/projects' element={<Project/>}/>
                     <Route path='/workspace' element={<Workspace />}/>
+                    <Route path='/tickets' element={<Tickets/>}/>
                   
-                    {/* <Route path='/dashboard' element={<Dashboard />} />
-                    <Route path='/course' element={<Course />} />
-                    <Route path='/profile' element={<Profile />} />
-                    <Route path='/login' element={<Login />} /> */}
+                   
                 </Routes>
             </Layout>
         </BrowserRouter>

@@ -27,7 +27,6 @@ export const signup = async (userData: ISignUp) => {
 export const login = async (userData: ILogin) => {
   try {
     const response = await axios.post(`${API_URL}/auth/login`, userData);
-    console.log(response.data, "test  data");
     const access = response.data.result.token;
 
     localStorage.setItem("token", access);
@@ -35,3 +34,13 @@ export const login = async (userData: ILogin) => {
     throw error;
   }
 };
+
+export const logout =async()=>{
+  try{
+    localStorage.removeItem("token");
+
+  }
+  catch(error){
+
+  }
+}
