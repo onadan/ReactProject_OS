@@ -6,6 +6,7 @@ import { Project } from '../pages/Project'
 import { Tasks } from '../pages/Tasks'
 import { Workspace } from '../pages/Workspace'
 
+
 export const Routing = () => {
   return (
     <div>
@@ -17,6 +18,7 @@ export const Routing = () => {
                     <Route path='/tasks'element={<Tasks />} />
                     <Route path='/projects' element={<Project/>}/>
                     <Route path='/workspace' element={<Workspace />}/>
+                  
                     {/* <Route path='/dashboard' element={<Dashboard />} />
                     <Route path='/course' element={<Course />} />
                     <Route path='/profile' element={<Profile />} />
