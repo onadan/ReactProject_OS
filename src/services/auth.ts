@@ -1,6 +1,6 @@
 import axios from "axios";
+import { API_URL } from "../constants/API";
 
-const API_URL = "http://localhost:3001/api";
 
 export interface ISignUp {
   firstname: string;
