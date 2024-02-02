@@ -6,7 +6,7 @@ import { BsArrowLeftCircle } from 'react-icons/bs'
 // import HamburgerButton from './HamburgerMenuButton/HamburgerButton'
 import { FaHome, FaProjectDiagram, FaTasks } from 'react-icons/fa'
 import { FaTicketSimple } from 'react-icons/fa6'
-import { VscWorkspaceTrusted } from 'react-icons/vsc'
+
 
 const Sidebar = () => {
   const [open, setOpen] = useState(true)
