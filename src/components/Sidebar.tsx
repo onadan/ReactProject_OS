@@ -40,7 +40,7 @@ const Sidebar = () => {
             {/* <img src={Logo} alt='' className='pl-2' /> */}
             {open && (
               <span className='text-xl font-medium whitespace-nowrap dark:text-white'>
-                Project X.
+                TICKET SYSTEM 
               </span>
             )}
           </div>
