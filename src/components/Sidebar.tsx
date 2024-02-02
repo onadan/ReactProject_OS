@@ -19,7 +19,7 @@ const Sidebar = () => {
     { title: 'My Tasks', path: '/tasks', src: <FaTasks /> },
     { title: 'Tickets', path: '/tickets', src: <FaTicketSimple /> },
     { title: 'Projects', path: '/projects', src: <FaProjectDiagram  /> },
-    { title: 'workspace', path: '/workspace', src: <VscWorkspaceTrusted /> },
+   
   ]
 
   return (
