@@ -30,7 +30,7 @@ interface ThemeProviderProps {
     children: ReactNode;
   }
   
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ initialTheme, children }) => {
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({  children }) => {
     const [theme, setTheme] = useState(getInitialTheme)
 
     const rawSetTheme = (rawTheme: string | undefined) => {
