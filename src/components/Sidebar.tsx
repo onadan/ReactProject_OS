@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 import { BsArrowLeftCircle } from 'react-icons/bs'
-// import Logo from '../assets/images/logo.svg'
-// import HamburgerButton from './HamburgerMenuButton/HamburgerButton'
 import { FaHome, FaProjectDiagram, FaTasks } from 'react-icons/fa'
 import { FaTicketSimple } from 'react-icons/fa6'
 
