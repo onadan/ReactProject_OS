@@ -12,7 +12,7 @@ function App() {
           <Route   path="/auth/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
-      <Routing />
+      {/* <Routing /> */}
     </div>
   );
 }
