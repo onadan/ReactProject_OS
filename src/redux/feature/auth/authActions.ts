@@ -24,7 +24,33 @@ export const registerUser = createAsyncThunk(
       };
       await axios.post(`${API_URL}/auth/signUp`, userData, config);
     } catch (error: any) {
-      
+      if (error.response && error.response.data.message) {
+        return rejectWithValue(error.response.data.message);
+      } else {
+        return rejectWithValue(error.message);
+      }
+    }
+  }
+);
+
+export const userLogin = createAsyncThunk(
+  "auth/login",
+  async (userData: ILogin, { rejectWithValue }) => {
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const { data } = await axios.post(
+        `${API_URL}/auth/login`,
+        userData,
+        config
+      );
+
+      localStorage.setItem("token", data.token);
+      return data;
+    } catch (error: any) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
       } else {
