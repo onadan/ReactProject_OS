@@ -12,11 +12,11 @@ const Sidebar = () => {
   const location = useLocation()
 
   const Menus = [
-    { title: 'Dashboard', path: '/', src: <FaHome  /> },
+    { title: 'Dasboard', path: '/app', src: <FaHome  /> },
 
-    { title: 'My Tasks', path: '/tasks', src: <FaTasks /> },
-    { title: 'Tickets', path: '/tickets', src: <FaTicketSimple /> },
-    { title: 'Projects', path: '/projects', src: <FaProjectDiagram  /> },
+    { title: 'My Tasks', path: '/app/tasks', src: <FaTasks /> },
+    { title: 'Tickets', path: '/app/tickets', src: <FaTicketSimple /> },
+    { title: 'Projects', path: '/app/projects', src: <FaProjectDiagram  /> },
    
   ]
 

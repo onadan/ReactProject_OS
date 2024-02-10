@@ -7,26 +7,31 @@ import { Workspace } from "../pages/Workspace";
 import { Tickets } from "../pages/Tickets";
 import Login from "../pages/auth/Login";
 import SignUp from "../pages/auth/SignUp";
+import PrivateRoute from "../components/PrivateRoute";
+import { Landing } from "../pages/Landing";
 
 export const Routing = () => {
   return (
-   
-   <div>
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path="/auth/signup" element={<SignUp />} />
           <Route path="/auth/login" element={<Login />} />
+          <Route path="/" element={<Landing />} />
 
           <Route
-            path="/"
+              path="/app/*"
             element={
               <Layout>
                 <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/tasks" element={<Tasks />} />
-                  <Route path="/projects" element={<Project />} />
-                  <Route path="/workspace" element={<Workspace />} />
-                  <Route path="/tickets" element={<Tickets />} />
+                  <Route
+                    index
+                    element={<PrivateRoute>{<Home />}</PrivateRoute>}
+                  />
+                  <Route path="/tasks" element={<PrivateRoute>{<Tasks/>} </PrivateRoute>} />
+                  <Route path="/projects" element={<PrivateRoute>{<Project/>}</PrivateRoute>} />
+                  <Route path="/workspace" element={<PrivateRoute>{<Workspace/>}</PrivateRoute> } />
+                  <Route path="/tickets" element={<PrivateRoute>{<Tickets/>}</PrivateRoute> } />
                 </Routes>
               </Layout>
             }

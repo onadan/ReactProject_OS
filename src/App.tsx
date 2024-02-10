@@ -1,10 +1,13 @@
+import { Fragment } from "react";
 import { Routing } from "./shared/Routing";
 
 function App() {
   return (
-    <div>
+    <Fragment>
+
       <Routing />
-    </div>
+    </Fragment>
+  
   );
 }
 

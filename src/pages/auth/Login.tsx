@@ -1,10 +1,9 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import {ILogin} from "../../services/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
-import { userLogin } from "../../redux/feature/auth/authActions";
+import { ILogin, userLogin } from "../../redux/feature/auth/authActions";
 
 interface RootState {
   auth: {
@@ -56,7 +55,7 @@ const Login: React.FC<{}> = () => {
             await dispatch(userLogin(values) as any);
           
             resetForm({ values: initialValues });
-            navigate('/');
+            navigate('/app');
           } catch (error) {
           } finally {
             setSubmitting(false);
