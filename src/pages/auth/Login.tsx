@@ -55,7 +55,7 @@ const Login: React.FC<{}> = () => {
             await dispatch(userLogin(values) as any);
           
             resetForm({ values: initialValues });
-            navigate('/dashboard');
+            navigate('/app');
           } catch (error) {
           } finally {
             setSubmitting(false);

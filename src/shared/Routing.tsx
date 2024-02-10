@@ -20,7 +20,7 @@ export const Routing = () => {
           <Route path="/" element={<Landing />} />
 
           <Route
-              path="/dashboard/*"
+              path="/app/*"
             element={
               <Layout>
                 <Routes>
