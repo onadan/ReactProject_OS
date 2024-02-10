@@ -1,14 +1,12 @@
 import { Fragment } from "react";
 import { Routing } from "./shared/Routing";
 
-function App() {
+const App: React.FC = () => {
   return (
     <Fragment>
-
       <Routing />
     </Fragment>
-  
   );
-}
+};
 
 export default App;

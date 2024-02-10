@@ -11,7 +11,7 @@ import PrivateRoute from "../components/PrivateRoute";
 import { Landing } from "../pages/Landing";
 import React from "react";
 
-export const Routing = () => {
+export const Routing:React.FC = () => {
   return (
     <div>
       <BrowserRouter>
