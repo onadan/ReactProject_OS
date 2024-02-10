@@ -1,12 +1,13 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import React from "react"
 
 import { BsArrowLeftCircle } from 'react-icons/bs'
 import { FaHome, FaProjectDiagram, FaTasks } from 'react-icons/fa'
 import { FaTicketSimple } from 'react-icons/fa6'
 
 
-const Sidebar = () => {
+const Sidebar:React.FC = () => {
   const [open, setOpen] = useState(true)
   const [mobileMenu, setMobileMenu] = useState(false)
   const location = useLocation()
