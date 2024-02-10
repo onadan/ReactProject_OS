@@ -1,18 +1,29 @@
-import React from "react";
-import { Route, redirect } from "react-router-dom";
+import React, { ReactNode, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+interface PrivateRouteProps {
+  children: ReactNode;
+}
 
 const isAuthenticated = () => {
   const token = localStorage.getItem("token");
   return token ? true : false;
 };
 
-const PrivateRoute: React.FC<any> = ({ component: Component, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props: any) =>
-      isAuthenticated() ? <Component {...props} /> : redirect("/login")
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated()) {
+      navigate("/auth/login");
     }
-  />
-);
+  }, [navigate]);
+
+  if (!isAuthenticated()) {
+    return null;
+  }
+
+  return <>{children}</>;
+};
 
 export default PrivateRoute;
