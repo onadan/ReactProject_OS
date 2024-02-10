@@ -1,16 +1,18 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { Home } from '../components/Home';
-import Layout from '../components/Layout';
+import { Home } from './Home';
+import Layout from './Layout';
 
 import { TaskList } from '../pages/tasks/TaskList';
 
 import Login from '../pages/auth/Login';
 import SignUp from '../pages/auth/SignUp';
-import PrivateRoute from '../components/PrivateRoute';
-import { Landing } from '../components/Landing';
+import PrivateRoute from './PrivateRoute';
+import { Landing } from './Landing';
 import React from 'react';
 import { ProjectList } from '../pages/projects/ProjectList';
 import TicketList from '../pages/tickets/TicketList';
+import MemberList from '../pages/members/MemberList';
+import AdminPrivateRoute from './AdminPrivateRoute';
 
 export const Routing: React.FC = () => {
   return (
@@ -34,6 +36,7 @@ export const Routing: React.FC = () => {
                   />
 
                   <Route path="/tickets" element={<PrivateRoute>{<TicketList />}</PrivateRoute>} />
+                  <Route path="/members" element={<AdminPrivateRoute>{<MemberList />}</AdminPrivateRoute>} />
                 </Routes>
               </Layout>
             }

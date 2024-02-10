@@ -4,22 +4,29 @@ import React from "react"
 
 import { BsArrowLeftCircle } from 'react-icons/bs'
 import { FaHome, FaProjectDiagram, FaTasks } from 'react-icons/fa'
-import { FaTicketSimple } from 'react-icons/fa6'
+import { FaTicketSimple, FaUserGroup } from 'react-icons/fa6'
+import { isAdmin } from '../utils/util'
 
 
 const Sidebar:React.FC = () => {
+  const isUserAdmin = isAdmin();
   const [open, setOpen] = useState(true)
   const [mobileMenu, setMobileMenu] = useState(false)
   const location = useLocation()
 
   const Menus = [
-    { title: 'Dasboard', path: '/app', src: <FaHome  /> },
-
+    { title: 'Dasboard', path: '/app', src: <FaHome /> },
     { title: 'My Tasks', path: '/app/tasks', src: <FaTasks /> },
     { title: 'Tickets', path: '/app/tickets', src: <FaTicketSimple /> },
-    { title: 'Projects', path: '/app/projects', src: <FaProjectDiagram  /> },
-   
-  ]
+    { title: 'Projects', path: '/app/projects', src: <FaProjectDiagram /> },
+  ];
+  
+ 
+  if (isUserAdmin) {
+    Menus.push({ title: 'Members', path: '/app/members', src: <FaUserGroup /> });
+  }
+  
+
 
   return (
     <>
