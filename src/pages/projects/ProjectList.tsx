@@ -1,6 +1,6 @@
 import React from "react"
 
-export const Project:React.FC = () => {
+export const ProjectList:React.FC = () => {
   return (
     <div>P</div>
   )
