@@ -1,4 +1,4 @@
-import Toggle from '../components/ThemeToggle'
+import React from "react"
 
 const Navbar = () => {
   return (
@@ -11,7 +11,7 @@ const Navbar = () => {
         </div>
 
         <div className='flex justify-end pr-4'>
-          <Toggle />
+        
         </div>
       </div>
     </nav>

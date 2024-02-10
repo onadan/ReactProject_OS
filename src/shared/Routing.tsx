@@ -9,6 +9,7 @@ import Login from "../pages/auth/Login";
 import SignUp from "../pages/auth/SignUp";
 import PrivateRoute from "../components/PrivateRoute";
 import { Landing } from "../pages/Landing";
+import React from "react";
 
 export const Routing = () => {
   return (
