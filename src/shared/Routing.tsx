@@ -18,11 +18,11 @@ export const Routing = () => {
           <Route path="/auth/login" element={<Login />} />
 
           <Route
-            path="/"
+            path="/dashboard"
             element={
               <Layout>
                 <Routes>
-                  <Route path="/" element={<Home />} />
+                  <Route path="/dashboard" element={<Home />} />
                   <Route path="/tasks" element={<Tasks />} />
                   <Route path="/projects" element={<Project />} />
                   <Route path="/workspace" element={<Workspace />} />
