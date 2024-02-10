@@ -1,6 +1,6 @@
 import React from "react"
 
-export const Tasks:React.FC = () => {
+export const TaskList:React.FC = () => {
   return (
     <div>T</div>
   )
