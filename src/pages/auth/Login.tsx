@@ -1,11 +1,24 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
-import {ILogin, login} from "../../services/auth";
+import {ILogin} from "../../services/auth";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux'
+import { userLogin } from "../../redux/feature/auth/authActions";
 
+interface RootState {
+  auth: {
+    loading: boolean;
+    userInfo: any; 
+    error: any;    
+    success: boolean;
 
+  };
+}
 const Login: React.FC<{}> = () => {
+  const { loading } = useSelector((state:RootState) => state.auth);
+  const dispatch = useDispatch()
+
   const validationSchema = Yup.object().shape({
    
     email: Yup.string()
@@ -40,7 +53,8 @@ const Login: React.FC<{}> = () => {
         validationSchema={validationSchema}
         onSubmit={async (values, { setSubmitting,resetForm }) => {
           try {
-            await login(values);
+            await dispatch(userLogin(values) as any);
+          
             resetForm({ values: initialValues });
             navigate('/');
           } catch (error) {
@@ -93,7 +107,8 @@ const Login: React.FC<{}> = () => {
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  Submit
+                   {loading ? 'Submitting...' : 'Submit'}
+                 
                 </button>
               </div>
             </div>

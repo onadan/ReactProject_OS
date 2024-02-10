@@ -150,7 +150,7 @@ const SignUp: React.FC<{}> = () => {
                   disabled={isSubmitting}
                 >
                    {loading ? 'Submitting...' : 'Submit'}
-                  Submit
+                 
                 </button>
               </div>
             </div>
