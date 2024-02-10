@@ -1,10 +1,9 @@
 import React from "react";
 import { Formik, Form, Field } from "formik";
-import {ISignUp} from "../../services/auth";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
-import { registerUser } from "../../redux/feature/auth/authActions";
+import { ISignUp, registerUser } from "../../redux/feature/auth/authActions";
 
 
 interface RootState {
