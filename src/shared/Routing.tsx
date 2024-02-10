@@ -15,6 +15,7 @@ export const Routing = () => {
     <div>
       <BrowserRouter>
         <Routes>
+          
           <Route path="/auth/signup" element={<SignUp />} />
           <Route path="/auth/login" element={<Login />} />
           <Route path="/" element={<Landing />} />
