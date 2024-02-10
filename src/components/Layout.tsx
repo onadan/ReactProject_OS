@@ -4,7 +4,7 @@ import React from "react"
 import Sidebar from './Sidebar'
 import Navbar from '../shared/Navbar'
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const Layout :React.FC<{children: ReactNode }> = ({children}) => {
     return (
         <>
             <div className='flex flex-auto h-screen'>

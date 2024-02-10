@@ -2,7 +2,7 @@ import React from "react"
 
 ///import logo from '../assets/images/logo.svg'
 
-const Logo = () => {
+const Logo:React.FC = () => {
     return (
         <div></div>
         // <nav className='border-gray-200 px-2 py-2.5 rounded dark:bg-gray-800'>
