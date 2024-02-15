@@ -1,1 +1,1 @@
-This is Ticket Management System
+This is open-source software currently under development

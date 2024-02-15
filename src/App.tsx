@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { Routing } from "./shared/Routing";
+import { Routing } from "./components/Routing";
 
 const App: React.FC = () => {
   return (
