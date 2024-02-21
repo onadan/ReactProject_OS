@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const UserProfile: React.FC = () => {
   let navigate = useNavigate();
+  
   const Logout = () => {
     logout();
     navigate('/');
