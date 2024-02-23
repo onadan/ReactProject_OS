@@ -13,6 +13,7 @@ import { ProjectList } from '../pages/projects/ProjectList';
 import TicketList from '../pages/tickets/TicketList';
 import MemberList from '../pages/members/MemberList';
 import AdminPrivateRoute from './AdminPrivateRoute';
+import Feedback from '../pages/Feedback/Feedback';
 
 export const Routing: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ export const Routing: React.FC = () => {
 
                   <Route path="/tickets" element={<PrivateRoute>{<TicketList />}</PrivateRoute>} />
                   <Route path="/members" element={<AdminPrivateRoute>{<MemberList />}</AdminPrivateRoute>} />
+                  <Route path="/feedback"  element={<Feedback/>} />
                 </Routes>
               </Layout>
             }
