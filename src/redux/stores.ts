@@ -3,9 +3,11 @@ import { useDispatch } from 'react-redux'
 import {combineReducers} from "redux";
 import logger from 'redux-logger'
 import {authReducer} from  './feature/auth/authSlice'
+import { projectReducer } from "./feature/project/projectSlice";
 
 const rootReducer = combineReducers({
-  auth: authReducer
+  auth: authReducer,
+  project:projectReducer
 
 })
 export const store = configureStore({
