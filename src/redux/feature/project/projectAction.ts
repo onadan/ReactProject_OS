@@ -48,8 +48,8 @@ export interface  IProject  {
     }
     
   );
-  export const GeAllMytProject = createAsyncThunk(
-    "project/GeAllMytProject",
+  export const GeAllMyProject = createAsyncThunk(
+    "project/GeAllMyProject",
     async ({},{rejectWithValue}) => {
       try {
        const result = await axios.get(`${API_URL}/project/all/myprojects`);
