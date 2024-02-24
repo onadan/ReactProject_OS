@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { API_URL } from "../../../constants/API";
+import { API_URL } from "../../../utils/setAuthToken";
 
 export interface ISignUp {
   firstname: string;

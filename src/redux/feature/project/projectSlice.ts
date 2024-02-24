@@ -1,20 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {IProject} from './projectAction'
 import { GeAllMyProject, GetAllProjectDashboard, GetProjectById, GetUserProjectDashboard, UpdateProjectById, assignProjectById, createProject, deleteProjectById, getAllProjects } from "./projectAction";
-
-interface ProjectState {
-  loading: boolean;
-  projects: IProject[] ;
-  error: null | unknown;
-  success: boolean;
-}
-
-const initialState: ProjectState = {
-  loading: false,
-  projects: []  , 
-  error: null,
-  success: false,
-};
+import { initialState } from "./types";
 
 const projectSlice = createSlice({
   name: "project",

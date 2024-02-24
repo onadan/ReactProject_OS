@@ -1,21 +1,10 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { API_URL } from "../../../constants/API";
 
-export interface  IProject  {
-    _id:string
-    title: string;
-    description: string;
-    startDate: Date |any;
-    status:string
-    endDate: Date|any;
-    assignedTo:any
-  };
+import { GetProjectArgs, IProject } from "./types";
+import axiosHttp  from "../../../utils/setAuthToken";
 
 
-  interface GetProjectArgs {
-    projectId: string;
-  }
   export const createProject = createAsyncThunk(
     "project/create",
     async (projectData: IProject, { rejectWithValue }) => {
@@ -34,7 +23,7 @@ export interface  IProject  {
           },
         };
   
-        await axios.post(`${API_URL}/project/create`, projectData, config);
+        await axios.post(`${axiosHttp}/project/create`, projectData, config);
       } catch (error: any) {
         if (error.response && error.response.data.message) {
           return rejectWithValue(error.response.data.message);
@@ -49,7 +38,8 @@ export interface  IProject  {
     "project/getAllProjects",
     async (_,{rejectWithValue}) => {
       try {
-      const response = await axios.get(`${API_URL}/project/all`);
+      const response = await axiosHttp.get('/project/all');
+      console.log(response.data.result,'test ')
       return response.data.result
          
       } catch (error) {
@@ -64,7 +54,7 @@ export interface  IProject  {
     "project/GeAllMyProject",
     async (_,{rejectWithValue}) => {
       try {
-       const result = await axios.get(`${API_URL}/project/all/myprojects`);
+       const result = await axios.get(`${axiosHttp}/project/all/myprojects`);
           return result.data.result
       } catch (error) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -79,7 +69,7 @@ export interface  IProject  {
     'project/GetProjectById',
     async ({ projectId }: GetProjectArgs, { rejectWithValue }) => {
       try {
-        const response = await axios.get(`${API_URL}/project/${projectId}`);
+        const response = await axios.get(`${axiosHttp}/project/${projectId}`);
         return response.data.result;
       } catch (error) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -93,7 +83,7 @@ export interface  IProject  {
     'project/deleteProjectById',
     async ({ projectId }: GetProjectArgs, { rejectWithValue }) => {
       try {
-        const response = await axios.delete(`${API_URL}/project/${projectId}`);
+        const response = await axios.delete(`${axiosHttp}/project/${projectId}`);
         return response.data.result;
       } catch (error:any) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -114,7 +104,7 @@ export interface  IProject  {
             'Content-Type': 'application/json',
           },
         };
-        const response = await axios.patch(`${API_URL}/project/${projectId}`, projectData, config);
+        const response = await axios.patch(`${axiosHttp}/project/${projectId}`, projectData, config);
         return response.data;
       } catch (error:any) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -135,7 +125,7 @@ export interface  IProject  {
             'Content-Type': 'application/json',
           },
         };
-        const response = await axios.patch(`${API_URL}/project/assignTo/${projectId}`, projectData, config);
+        const response = await axios.patch(`${axiosHttp}/project/assignTo/${projectId}`, projectData, config);
         return response.data;
       } catch (error:any) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -153,7 +143,7 @@ export interface  IProject  {
     "project/GetAllProjectDashboard",
     async ({},{rejectWithValue}) => {
       try {
-       const result = await axios.get(`${API_URL}/project/dashboard/totals`);
+       const result = await axios.get(`${axiosHttp}/project/dashboard/totals`);
           return result.data
       } catch (error) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -167,7 +157,7 @@ export interface  IProject  {
     "project/GeAllProjectDashboard",
     async ({},{rejectWithValue}) => {
       try {
-       const result = await axios.get(`${API_URL}/project/dashboard/user/totals`);
+       const result = await axios.get(`${axiosHttp}/project/dashboard/user/totals`);
           return result.data
       } catch (error) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {

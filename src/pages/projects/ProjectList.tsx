@@ -9,13 +9,10 @@ import {
 } from '../../components/ui/table';
 import { RootState, useAppDispatch } from '../../redux/stores';
 import { useNavigate } from 'react-router-dom';
-import {
-  GeAllMyProject,
-  IProject,
-  getAllProjects
-} from '../../redux/feature/project/projectAction';
+import { GeAllMyProject, getAllProjects } from '../../redux/feature/project/projectAction';
 import { useSelector } from 'react-redux';
 import { formatDate, isAdmin } from '../../utils/util';
+import { IProject } from '../../redux/feature/project/types';
 
 export const ProjectList: React.FC = () => {
   const projects: IProject[] | undefined = useSelector(
@@ -28,14 +25,13 @@ export const ProjectList: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        isAdmin() ? await dispatch(getAllProjects()) : await dispatch(GeAllMyProject());
-      } catch (error) {
-        console.error('Error fetching projects:', error);
-      }
-    };
+        const actionToDispatch = isAdmin() ? getAllProjects() : GeAllMyProject();
 
+        await dispatch(actionToDispatch);
+      } catch (error) {}
+    };
     fetchData();
-  }, [dispatch]);
+  }, [dispatch, isAdmin]);
 
   return (
     <Fragment>
@@ -68,7 +64,11 @@ export const ProjectList: React.FC = () => {
                 <TableCell>{formatDate(project.startDate)}</TableCell>
                 <TableCell>{formatDate(project.endDate)}</TableCell>
                 <TableCell>
-                  <button onClick={()=>navigate(`/app/project/details/${project?._id}`)} className="bg-blue-500 text-white px-4 py-2 rounded">View</button>
+                  <button
+                    onClick={() => navigate(`/app/project/details/${project?._id}`)}
+                    className="bg-blue-500 text-white px-4 py-2 rounded">
+                    View
+                  </button>
                 </TableCell>
               </TableRow>
             ))}

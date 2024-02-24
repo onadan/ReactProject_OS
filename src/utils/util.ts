@@ -29,3 +29,7 @@ export function formatDate(dateString: any) {
   const formattedDate = new Date(dateString).toLocaleDateString(undefined, options);
   return formattedDate;
 }
+
+export  function getAccessToken(){
+  return localStorage.getItem('token')
+}
