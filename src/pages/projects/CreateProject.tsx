@@ -1,9 +1,10 @@
 
-import { IProject,createProject } from '../../redux/feature/project/projectAction';
+import { createProject } from '../../redux/feature/project/projectAction';
 import React, { Fragment } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import {  useAppDispatch } from '../../redux/stores';
+import { IProject } from '../../redux/feature/project/types';
 const CreateProject: React.FC = () => {
   const navigate =useNavigate()
   const dispatch = useAppDispatch();
@@ -64,7 +65,7 @@ const CreateProject: React.FC = () => {
           className="border rounded-md px-3 py-2 w-full focus:outline-none focus:shadow-outline-blue"
           {...register('description', { required: 'Description is required' })}
         />
-        {errors.description && <p>{errors.description.message}</p>}
+        {/* {errors.description && <p>{errors.description.message}</p>} */}
       </div>
 
       
