@@ -1,5 +1,5 @@
-import { useLocation } from "react-router-dom";
-import {JwtPayload, jwtDecode} from "jwt-decode";
+import { useLocation } from 'react-router-dom';
+import { JwtPayload, jwtDecode } from 'jwt-decode';
 
 interface DecodedToken extends JwtPayload {
   roles: string[];
@@ -16,15 +16,16 @@ export function isAdmin() {
 
   if (token) {
     const payload = jwtDecode<DecodedToken>(token);
-    const result = payload.roles.includes('SYSADMIN')
- 
-    return result
-   
+    const result = payload.roles.includes('SYSADMIN');
+
+    return result;
   }
 }
-export function logout(){
-return localStorage.removeItem('token')
+export function logout() {
+  return localStorage.removeItem('token');
 }
-// export function redirectBack(){
-// return  useNav.
-// }
+export function formatDate(dateString: any) {
+  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = new Date(dateString).toLocaleDateString(undefined, options);
+  return formattedDate;
+}

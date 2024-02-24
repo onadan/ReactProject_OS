@@ -1,13 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {IProject} from './projectAction'
 import { GeAllMyProject, GetAllProjectDashboard, GetProjectById, GetUserProjectDashboard, UpdateProjectById, assignProjectById, createProject, deleteProjectById, getAllProjects } from "./projectAction";
 
-const initialState = {
+interface ProjectState {
+  loading: boolean;
+  projects: IProject[] ;
+  error: null | unknown;
+  success: boolean;
+}
+
+const initialState: ProjectState = {
   loading: false,
-  entities:[],
-  error: null as null |unknown,
+  projects: []  , 
+  error: null,
   success: false,
 };
-
 
 const projectSlice = createSlice({
   name: "project",
@@ -20,10 +27,12 @@ const projectSlice = createSlice({
       state.error = null;
     });
 
-    builder.addCase(createProject.fulfilled, (state) => {
+    builder.addCase(createProject.fulfilled, (state,{payload}) => {
         state.loading = false;
         state.success = true;
-        
+        if (payload) {
+          state.projects = [...state.projects, payload];
+        }
       });
       
 
@@ -40,7 +49,7 @@ const projectSlice = createSlice({
         state.loading = false;
         state.success = true;
         if (payload) {
-        state.entities=payload
+        state.projects=payload
         }
       });
       
@@ -58,7 +67,7 @@ const projectSlice = createSlice({
           state.loading = false;
           state.success = true;
           if (payload) {
-          state.entities=payload
+          state.projects=payload
           }
         });
         
