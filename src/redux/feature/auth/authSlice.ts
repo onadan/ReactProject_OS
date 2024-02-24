@@ -5,7 +5,7 @@ const initialState = {
   loading: false,
   userInfo: null,
   token: null,
-  error: null as null |unknown,
+  error: null  as null |any,
   success: false,
 };
 

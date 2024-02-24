@@ -3,10 +3,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { API_URL } from "../../../constants/API";
 
 export interface  IProject  {
+    _id:string
     title: string;
     description: string;
-    startDate: Date;
-    endDate: Date;
+    startDate: Date |any;
+    status:string
+    endDate: Date|any;
     assignedTo:any
   };
 
@@ -18,11 +20,20 @@ export interface  IProject  {
     "project/create",
     async (projectData: IProject, { rejectWithValue }) => {
       try {
+        const token = localStorage.getItem("token");
+  
+        if (!token) {
+          // Handle the case where the token is not available
+          throw new Error("Token not available");
+        }
+  
         const config = {
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
           },
         };
+  
         await axios.post(`${API_URL}/project/create`, projectData, config);
       } catch (error: any) {
         if (error.response && error.response.data.message) {
@@ -32,14 +43,15 @@ export interface  IProject  {
         }
       }
     }
-    
   );
+  
   export const getAllProjects = createAsyncThunk(
     "project/getAllProjects",
-    async ({},{rejectWithValue}) => {
+    async (_,{rejectWithValue}) => {
       try {
-       const result = await axios.get(`${API_URL}/project/all`);
-          return result.data
+      const response = await axios.get(`${API_URL}/project/all`);
+      return response.data.result
+         
       } catch (error) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {
             return rejectWithValue(error.response.data.message);
@@ -50,10 +62,10 @@ export interface  IProject  {
   );
   export const GeAllMyProject = createAsyncThunk(
     "project/GeAllMyProject",
-    async ({},{rejectWithValue}) => {
+    async (_,{rejectWithValue}) => {
       try {
        const result = await axios.get(`${API_URL}/project/all/myprojects`);
-          return result.data
+          return result.data.result
       } catch (error) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {
             return rejectWithValue(error.response.data.message);
@@ -68,7 +80,7 @@ export interface  IProject  {
     async ({ projectId }: GetProjectArgs, { rejectWithValue }) => {
       try {
         const response = await axios.get(`${API_URL}/project/${projectId}`);
-        return response.data;
+        return response.data.result;
       } catch (error) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {
           return rejectWithValue(error.response.data.message);
@@ -82,7 +94,7 @@ export interface  IProject  {
     async ({ projectId }: GetProjectArgs, { rejectWithValue }) => {
       try {
         const response = await axios.delete(`${API_URL}/project/${projectId}`);
-        return response.data;
+        return response.data.result;
       } catch (error:any) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {
           return rejectWithValue(error.response.data.message);
