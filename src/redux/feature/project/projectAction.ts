@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { API_URL } from "../../../constants/API";
 
 export interface  IProject  {
-  id:string
+    _id:string
     title: string;
     description: string;
     startDate: Date |any;
@@ -65,7 +65,7 @@ export interface  IProject  {
     async (_,{rejectWithValue}) => {
       try {
        const result = await axios.get(`${API_URL}/project/all/myprojects`);
-          return result.data
+          return result.data.result
       } catch (error) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {
             return rejectWithValue(error.response.data.message);
@@ -80,7 +80,7 @@ export interface  IProject  {
     async ({ projectId }: GetProjectArgs, { rejectWithValue }) => {
       try {
         const response = await axios.get(`${API_URL}/project/${projectId}`);
-        return response.data;
+        return response.data.result;
       } catch (error) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {
           return rejectWithValue(error.response.data.message);
@@ -94,7 +94,7 @@ export interface  IProject  {
     async ({ projectId }: GetProjectArgs, { rejectWithValue }) => {
       try {
         const response = await axios.delete(`${API_URL}/project/${projectId}`);
-        return response.data;
+        return response.data.result;
       } catch (error:any) {
         if (axios.isAxiosError(error) && error.response && error.response.data.message) {
           return rejectWithValue(error.response.data.message);

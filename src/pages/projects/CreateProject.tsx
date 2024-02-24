@@ -1,6 +1,6 @@
 
 import { IProject,createProject } from '../../redux/feature/project/projectAction';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import {  useAppDispatch } from '../../redux/stores';
@@ -21,6 +21,8 @@ const CreateProject: React.FC = () => {
   } 
 
   return (
+    <Fragment>
+      <h6 className='font-bold'>Create Project</h6>
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="max-w-full mx-auto p-4 bg-white shadow-md rounded-md ">
@@ -41,7 +43,7 @@ const CreateProject: React.FC = () => {
             type="date"
             {...register('startDate', { required: 'Start Date is required' })}
           />
-          {errors.startDate && <p>{errors.startDate.message}</p>}
+          {/* {errors.startDate && <p>{errors.startDate.message}</p>} */}
         </div>
 
         <div className="mb-4  w-1/2">
@@ -51,7 +53,7 @@ const CreateProject: React.FC = () => {
             type="date"
             {...register('endDate', { required: 'End Date is required' })}
           />
-          {errors.endDate && <p>{errors.endDate.message}</p>}
+          {/* {errors.endDate && <p>{errors.endDate.message}</p>} */}
         </div>
       </div>
 
@@ -79,6 +81,8 @@ const CreateProject: React.FC = () => {
       </div>
     </div>
     </form>
+
+    </Fragment>
   );
 };
 

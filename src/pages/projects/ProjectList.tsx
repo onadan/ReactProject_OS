@@ -8,24 +8,27 @@ import {
   TableRow
 } from '../../components/ui/table';
 import { RootState, useAppDispatch } from '../../redux/stores';
-// import { useNavigate } from "react-router-dom";
-import { IProject, getAllProjects } from '../../redux/feature/project/projectAction';
+import { useNavigate } from 'react-router-dom';
+import {
+  GeAllMyProject,
+  IProject,
+  getAllProjects
+} from '../../redux/feature/project/projectAction';
 import { useSelector } from 'react-redux';
-import { formatDate } from '../../utils/util';
+import { formatDate, isAdmin } from '../../utils/util';
 
 export const ProjectList: React.FC = () => {
   const projects: IProject[] | undefined = useSelector(
     (state: RootState) => state.project.projects
   );
 
-  // const navigate =useNavigate()
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-         await dispatch(getAllProjects());
-       
+        isAdmin() ? await dispatch(getAllProjects()) : await dispatch(GeAllMyProject());
       } catch (error) {
         console.error('Error fetching projects:', error);
       }
@@ -37,9 +40,15 @@ export const ProjectList: React.FC = () => {
   return (
     <Fragment>
       <div className="mb-4 text-right">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded">Add Project</button>
+        {isAdmin() && (
+          <button
+            onClick={() => navigate('/app/project/create')}
+            className="bg-blue-500 text-white px-4 py-2 rounded">
+            Add Project
+          </button>
+        )}
       </div>
-      <h6>Projects List</h6>
+      <h6 className="font-bold">Projects List</h6>
       <Table className="mt-5">
         <TableHeader>
           <TableRow>
@@ -59,7 +68,7 @@ export const ProjectList: React.FC = () => {
                 <TableCell>{formatDate(project.startDate)}</TableCell>
                 <TableCell>{formatDate(project.endDate)}</TableCell>
                 <TableCell>
-                  <button className="bg-blue-500 text-white px-4 py-2 rounded">View</button>
+                  <button onClick={()=>navigate(`/app/project/details/${project?._id}`)} className="bg-blue-500 text-white px-4 py-2 rounded">View</button>
                 </TableCell>
               </TableRow>
             ))}

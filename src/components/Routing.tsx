@@ -1,9 +1,7 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Home } from './Home';
 import Layout from './Layout';
-
 import { TaskList } from '../pages/tasks/TaskList';
-
 import Login from '../pages/auth/Login';
 import SignUp from '../pages/auth/SignUp';
 import PrivateRoute from './PrivateRoute';
@@ -15,6 +13,7 @@ import MemberList from '../pages/members/MemberList';
 import AdminPrivateRoute from './AdminPrivateRoute';
 import Feedback from '../pages/Feedback/Feedback';
 import CreateProject from '../pages/projects/CreateProject';
+import ProjectDetails from '../pages/projects/ProjectDetails';
 
 export const Routing: React.FC = () => {
   return (
@@ -38,7 +37,11 @@ export const Routing: React.FC = () => {
                   />
                      <Route
                     path="/project/create"
-                    element={<PrivateRoute>{<CreateProject />}</PrivateRoute>}
+                    element={<AdminPrivateRoute>{<CreateProject />}</AdminPrivateRoute>}
+                  />
+                   <Route
+                    path="/project/details/:projectId"
+                    element={<PrivateRoute>{<ProjectDetails />}</PrivateRoute>}
                   />
 
                   <Route path="/tickets" element={<PrivateRoute>{<TicketList />}</PrivateRoute>} />
