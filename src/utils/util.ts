@@ -25,3 +25,6 @@ export function isAdmin() {
 export function logout(){
 return localStorage.removeItem('token')
 }
+// export function redirectBack(){
+// return  useNav.
+// }

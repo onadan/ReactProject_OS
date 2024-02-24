@@ -77,16 +77,9 @@ const projectSlice = createSlice({
           state.success = true;
           
         });
-        builder.addCase(GeAllMyProject.fulfilled, (state, { payload }) => {
-            state.loading = false;
-            state.success = true;
-            if (payload) {
-            state.entities=payload
-            }
-          });
-          
+    
      
-        builder.addCase(GeAllMyProject.rejected, (state, { payload }) => {
+        builder.addCase(GetProjectById.rejected, (state, { payload }) => {
           state.loading = false;
           state.error = payload;
         });
@@ -122,10 +115,7 @@ const projectSlice = createSlice({
       state.loading = false;
       state.error = payload;
     });
-    builder.addCase(GetUserProjectDashboard.rejected, (state, { payload }) => {
-        state.loading = false;
-        state.error = payload;
-      });
+   
       builder.addCase(assignProjectById.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -143,10 +133,7 @@ const projectSlice = createSlice({
       state.error = payload;
     });
 
-    builder.addCase(GetUserProjectDashboard.rejected, (state, { payload }) => {
-        state.loading = false;
-        state.error = payload;
-      });
+   
       builder.addCase(UpdateProjectById.pending, (state) => {
         state.loading = true;
         state.error = null;

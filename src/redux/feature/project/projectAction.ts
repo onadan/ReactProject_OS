@@ -18,11 +18,20 @@ export interface  IProject  {
     "project/create",
     async (projectData: IProject, { rejectWithValue }) => {
       try {
+        const token = localStorage.getItem("token");
+  
+        if (!token) {
+          // Handle the case where the token is not available
+          throw new Error("Token not available");
+        }
+  
         const config = {
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
           },
         };
+  
         await axios.post(`${API_URL}/project/create`, projectData, config);
       } catch (error: any) {
         if (error.response && error.response.data.message) {
@@ -32,8 +41,8 @@ export interface  IProject  {
         }
       }
     }
-    
   );
+  
   export const getAllProjects = createAsyncThunk(
     "project/getAllProjects",
     async ({},{rejectWithValue}) => {
