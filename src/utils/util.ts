@@ -30,6 +30,10 @@ export function formatDate(dateString: any) {
   return formattedDate;
 }
 
-export  function getAccessToken(){
-  return localStorage.getItem('token')
+export function getAccessToken() {
+  return localStorage.getItem('token');
+}
+
+export function goBack() {
+  return window.history.back();
 }

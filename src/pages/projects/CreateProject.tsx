@@ -5,6 +5,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import {  useAppDispatch } from '../../redux/stores';
 import { IProject } from '../../redux/feature/project/types';
+import { goBack } from '../../utils/util';
 const CreateProject: React.FC = () => {
   const navigate =useNavigate()
   const dispatch = useAppDispatch();
@@ -71,7 +72,7 @@ const CreateProject: React.FC = () => {
       
       <div className="flex flex-row space-x-4 justify-end">
       <div className="mb-4 text-right">
-        <button type="button" className="text-white rounded p-2 bg-red-700">
+        <button type="button" onClick={()=>goBack()}  className="text-white rounded p-2 bg-red-700">
           Cancel
         </button>
       </div>
