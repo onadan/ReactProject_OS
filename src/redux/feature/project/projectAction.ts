@@ -30,7 +30,7 @@ export const getAllProjects = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axiosHttp.get('/project/all');
-      console.log(response.data.result, 'test ');
+
       return response.data.result;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -43,7 +43,7 @@ export const GeAllMyProject = createAsyncThunk(
   'project/GeAllMyProject',
   async (_, { rejectWithValue }) => {
     try {
-      const result = await axios.get(`${axiosHttp}/project/all/myprojects`);
+      const result = await axiosHttp.get(`/project/all/myprojects`);
       return result.data.result;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -71,7 +71,7 @@ export const deleteProjectById = createAsyncThunk(
   'project/deleteProjectById',
   async ({ projectId }: GetProjectArgs, { rejectWithValue }) => {
     try {
-      const response = await axios.delete(`${axiosHttp}/project/${projectId}`);
+      const response = await axiosHttp.delete(`/project/${projectId}`);
       return response.data.result;
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -115,11 +115,7 @@ export const assignProjectById = createAsyncThunk(
           'Content-Type': 'application/json'
         }
       };
-      const response = await axios.patch(
-        `${axiosHttp}/project/assignTo/${projectId}`,
-        projectData,
-        config
-      );
+      const response = await axiosHttp.patch(`/project/assignTo/${projectId}`, projectData, config);
       return response.data;
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -135,7 +131,7 @@ export const GetAllProjectDashboard = createAsyncThunk(
   'project/GetAllProjectDashboard',
   async ({}, { rejectWithValue }) => {
     try {
-      const result = await axios.get(`${axiosHttp}/project/dashboard/totals`);
+      const result = await axiosHttp.get(`/project/dashboard/totals`);
       return result.data;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -148,7 +144,7 @@ export const GetUserProjectDashboard = createAsyncThunk(
   'project/GeAllProjectDashboard',
   async ({}, { rejectWithValue }) => {
     try {
-      const result = await axios.get(`${axiosHttp}/project/dashboard/user/totals`);
+      const result = await axiosHttp.get(`/project/dashboard/user/totals`);
       return result.data;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response && error.response.data.message) {

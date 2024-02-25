@@ -13,7 +13,7 @@ import { convertToSimpleDate, goBack } from '../../utils/util';
 const CreateProject: React.FC = () => {
   const dispatch = useAppDispatch();
   const { projectId } = useParams();
-  const [isEdit, /* setIsEdit */] = useState<boolean>(!!projectId);
+  const [isEdit /* setIsEdit */] = useState<boolean>(!!projectId);
 
   const {
     handleSubmit,
@@ -31,9 +31,15 @@ const CreateProject: React.FC = () => {
             projectId: projectId
           };
           const fetchedProject = await dispatch(GetProjectById(args));
-          setValue('title',  fetchedProject.payload.title);
-          setValue('startDate',convertToSimpleDate( new Date(fetchedProject.payload.startDate ?? new Date())));
-          setValue('endDate', convertToSimpleDate(new Date (fetchedProject.payload.endDate) ?? new Date()));
+          setValue('title', fetchedProject.payload.title);
+          setValue(
+            'startDate',
+            convertToSimpleDate(new Date(fetchedProject.payload.startDate ?? new Date()))
+          );
+          setValue(
+            'endDate',
+            convertToSimpleDate(new Date(fetchedProject.payload.endDate) ?? new Date())
+          );
           setValue('description', fetchedProject.payload.description);
         }
       } catch (error) {
