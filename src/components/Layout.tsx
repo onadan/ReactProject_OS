@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import React from "react"
 
 import Sidebar from './Sidebar'
-import Navbar from '../shared/Navbar'
+import Navbar from './Navbar'
 
 const Layout :React.FC<{children: ReactNode }> = ({children}) => {
     return (
