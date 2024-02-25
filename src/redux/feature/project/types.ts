@@ -2,15 +2,15 @@ export interface  IProject  {
     _id:string
     title: string;
     description: string;
-    startDate: Date |string;
+    startDate:  string;
     status:string
-    endDate: Date|string;
+    endDate: string;
     assignedTo:any
   };
 
 
  export  interface GetProjectArgs {
-    projectId: string 
+    projectId: string  |undefined
   }
   
 interface ProjectState {

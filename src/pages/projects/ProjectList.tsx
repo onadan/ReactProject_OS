@@ -44,8 +44,8 @@ export const ProjectList: React.FC = () => {
           </button>
         )}
       </div>
-      <h6 className="font-bold">Projects List</h6>
-      <Table className="mt-5">
+      <h6 className='font-thin text-lg'>Projects List</h6>
+      <Table className=" container mt-5">
         <TableHeader>
           <TableRow>
             <TableHead>Title</TableHead>

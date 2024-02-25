@@ -63,7 +63,7 @@ const CreateProject: React.FC = () => {
 
   return (
     <Fragment>
-      <h6 className="font-bold">{isEdit ? 'Edit Project' : 'Create Project'} </h6>
+      <h6 className="font-thin text-lg">{isEdit ? 'Edit Project' : 'Create Project'} </h6>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-full mx-auto p-4 bg-white shadow-md rounded-md ">
