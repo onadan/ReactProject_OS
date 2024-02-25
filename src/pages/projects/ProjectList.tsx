@@ -13,7 +13,7 @@ import { GeAllMyProject, getAllProjects } from '../../redux/feature/project/proj
 import { useSelector } from 'react-redux';
 import { formatDate, isAdmin } from '../../utils/util';
 import { IProject } from '../../redux/feature/project/types';
-
+// import { FaEye } from "react-icons/fa";
 export const ProjectList: React.FC = () => {
   const projects: IProject[] | undefined = useSelector(
     (state: RootState) => state.project.projects
@@ -63,11 +63,19 @@ export const ProjectList: React.FC = () => {
                 <TableCell>{project.status}</TableCell>
                 <TableCell>{formatDate(project.startDate)}</TableCell>
                 <TableCell>{formatDate(project.endDate)}</TableCell>
-                <TableCell>
+                <TableCell className='space-x-2'>
+                  
                   <button
                     onClick={() => navigate(`/app/project/details/${project?._id}`)}
                     className="bg-blue-500 text-white px-4 py-2 rounded">
                     View
+                    
+                  </button>
+                  <button
+
+                    onClick={() => navigate(`/app/project/edit/${project?._id}`)}
+                    className="bg-blue-500 text-white px-4 py-2 rounded">
+                    Edit
                   </button>
                 </TableCell>
               </TableRow>

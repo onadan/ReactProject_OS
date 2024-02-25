@@ -39,6 +39,10 @@ export const Routing: React.FC = () => {
                     path="/project/create"
                     element={<AdminPrivateRoute>{<CreateProject />}</AdminPrivateRoute>}
                   />
+                      <Route
+                    path="/project/edit/:projectId"
+                    element={<AdminPrivateRoute>{<CreateProject />}</AdminPrivateRoute>}
+                  />
                    <Route
                     path="/project/details/:projectId"
                     element={<PrivateRoute>{<ProjectDetails />}</PrivateRoute>}
