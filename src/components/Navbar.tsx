@@ -15,18 +15,16 @@ const Navbar: React.FC = () => {
         </a>
 
         <button onClick={toggleMenu} className="menu-btn md:hidden focus:outline-none">
-        <svg
-  xmlns="http://www.w3.org/2000/svg"
-  className="h-6 w-6 text-gray-800"
-  viewBox="0 0 20 20"
-  fill="currentColor"
->
-  <path
-    fillRule="evenodd"
-    d="M3 6h14a1 1 0 010 2H3a1 1 0 010-2zm0 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 5h14a1 1 0 010 2H3a1 1 0 010-2z"
-  />
-</svg>
-
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-gray-800"
+            viewBox="0 0 20 20"
+            fill="currentColor">
+            <path
+              fillRule="evenodd"
+              d="M3 6h14a1 1 0 010 2H3a1 1 0 010-2zm0 5h14a1 1 0 010 2H3a1 1 0 010-2zm0 5h14a1 1 0 010 2H3a1 1 0 010-2z"
+            />
+          </svg>
         </button>
         <ul className="hidden md:flex md:space-x-20">
           <li>
@@ -51,7 +49,7 @@ const Navbar: React.FC = () => {
           </li>
           <li>
             <a href="#" className="text-gray-600 hover:text-gray-800">
-              Contact
+              Login
             </a>
           </li>
         </ul>
@@ -82,13 +80,14 @@ const Navbar: React.FC = () => {
               </li>
               <li>
                 <a href="#" className="text-gray-600 hover:text-gray-800">
-                  Contact
+                  Login
                 </a>
               </li>
             </ul>
           </div>
         )}
       </nav>
+      {/* <Hero/> */}
     </>
   );
 };
