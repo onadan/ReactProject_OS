@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
           <img src={bug} className="w-custom-width" alt="bug" />
         </div>
       </div>
-      <div className="w-full md:w-1/2 mb-8 md:mb-0 md:ml-20">
+      <div className="container mx-auto px-4 flex flex-col items-center  md:items-start w-full ">
         <h2 className="text-3xl font-bold text-gray-800 mb-4">Our Value and Mission</h2>
         <p className="text-lg">
           Our ticket management system is designed to simplify the process of tracking and resolving
