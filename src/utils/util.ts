@@ -30,6 +30,16 @@ export function formatDate(dateString: any) {
   return formattedDate;
 }
 
-export  function getAccessToken(){
-  return localStorage.getItem('token')
+export function getAccessToken() {
+  return localStorage.getItem('token');
+}
+
+export function goBack() {
+  return window.history.back();
+}
+  export function convertToSimpleDate(dateObj: Date): string {
+  const year = dateObj.getFullYear();
+  const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+  const day = String(dateObj.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 }

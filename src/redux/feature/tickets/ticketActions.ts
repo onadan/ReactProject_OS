@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { GetProjectArgs, IProject, UpdateProjectArgs } from './types';
 import axiosHttp from '../../../utils/setAuthToken';
+import { GetTicketArgs, ITicket, UpdateTicketArgs } from './types';
 
-export const createProject = createAsyncThunk(
-  'project/create',
-  async (projectData: IProject, { rejectWithValue }) => {
+export const createTicket = createAsyncThunk(
+  'ticket/create',
+  async (TicketData: ITicket, { rejectWithValue }) => {
     try {
       const config = {
         headers: {
@@ -14,7 +14,7 @@ export const createProject = createAsyncThunk(
         }
       };
 
-      await axiosHttp.post(`/project/create`, projectData, config);
+      await axiosHttp.post(`/ticket/create`, TicketData, config);
     } catch (error: any) {
       if (error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
@@ -25,11 +25,11 @@ export const createProject = createAsyncThunk(
   }
 );
 
-export const getAllProjects = createAsyncThunk(
-  'project/getAllProjects',
+export const getAllTickets = createAsyncThunk(
+  'Ticket/getAllTickets',
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axiosHttp.get('/project/all');
+      const response = await axiosHttp.get('/ticket/all');
 
       return response.data.result;
     } catch (error) {
@@ -39,11 +39,11 @@ export const getAllProjects = createAsyncThunk(
     }
   }
 );
-export const GeAllMyProject = createAsyncThunk(
-  'project/GeAllMyProject',
+export const GeAllMyTicket = createAsyncThunk(
+  'Ticket/GeAllMyTicket',
   async (_, { rejectWithValue }) => {
     try {
-      const result = await axiosHttp.get(`/project/all/myprojects`);
+      const result = await axiosHttp.get(`/ticket/mine`);
       return result.data.result;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -53,11 +53,11 @@ export const GeAllMyProject = createAsyncThunk(
   }
 );
 
-export const GetProjectById = createAsyncThunk(
-  'project/GetProjectById',
-  async ({ projectId }: GetProjectArgs, { rejectWithValue }) => {
+export const GetTicketById = createAsyncThunk(
+  'Ticket/GetTicketById',
+  async ({ ticketId }: GetTicketArgs, { rejectWithValue }) => {
     try {
-      const response = await axiosHttp.get(`/project/${projectId}`);
+      const response = await axiosHttp.get(`/ticket/${ticketId}`);
       return response.data.result;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -67,11 +67,11 @@ export const GetProjectById = createAsyncThunk(
   }
 );
 
-export const deleteProjectById = createAsyncThunk(
-  'project/deleteProjectById',
-  async ({ projectId }: GetProjectArgs, { rejectWithValue }) => {
+export const deleteTicketById = createAsyncThunk(
+  'Ticket/deleteTicketById',
+  async ({ ticketId }: GetTicketArgs, { rejectWithValue }) => {
     try {
-      const response = await axiosHttp.delete(`/project/${projectId}`);
+      const response = await axiosHttp.delete(`/ticket/${ticketId}`);
       return response.data.result;
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -83,16 +83,16 @@ export const deleteProjectById = createAsyncThunk(
   }
 );
 
-export const UpdateProjectById = createAsyncThunk(
-  'project/UpdateProjectById',
-  async ({ projectId, projectData }: UpdateProjectArgs, { rejectWithValue }) => {
+export const UpdateTicketById = createAsyncThunk(
+  'Ticket/UpdateTicketById',
+  async ({ ticketId, ticketData }: UpdateTicketArgs, { rejectWithValue }) => {
     try {
       const config = {
         headers: {
           'Content-Type': 'application/json'
         }
       };
-      const response = await axiosHttp.patch(`/project/${projectId}`, projectData, config);
+      const response = await axiosHttp.patch(`/ticket/${ticketId}`, ticketData, config);
       return response.data;
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response && error.response.data.message) {
@@ -103,10 +103,10 @@ export const UpdateProjectById = createAsyncThunk(
     }
   }
 );
-export const assignProjectById = createAsyncThunk(
-  'project/assignProjectById',
+export const assignTicketById = createAsyncThunk(
+  'Ticket/assignTicketById',
   async (
-    { projectId, projectData }: { projectId: string; projectData: IProject },
+    { TicketId, TicketData }: { TicketId: string; TicketData: ITicket },
     { rejectWithValue }
   ) => {
     try {
@@ -115,40 +115,13 @@ export const assignProjectById = createAsyncThunk(
           'Content-Type': 'application/json'
         }
       };
-      const response = await axiosHttp.patch(`/project/assignTo/${projectId}`, projectData, config);
+      const response = await axiosHttp.patch(`/Ticket/assignTo/${TicketId}`, TicketData, config);
       return response.data;
     } catch (error: any) {
       if (axios.isAxiosError(error) && error.response && error.response.data.message) {
         return rejectWithValue(error.response.data.message);
       } else {
         return rejectWithValue(error.message);
-      }
-    }
-  }
-);
-
-export const GetAllProjectDashboard = createAsyncThunk(
-  'project/GetAllProjectDashboard',
-  async ({}, { rejectWithValue }) => {
-    try {
-      const result = await axiosHttp.get(`/project/dashboard/totals`);
-      return result.data;
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
-      }
-    }
-  }
-);
-export const GetUserProjectDashboard = createAsyncThunk(
-  'project/GeAllProjectDashboard',
-  async ({}, { rejectWithValue }) => {
-    try {
-      const result = await axiosHttp.get(`/project/dashboard/user/totals`);
-      return result.data;
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response && error.response.data.message) {
-        return rejectWithValue(error.response.data.message);
       }
     }
   }
