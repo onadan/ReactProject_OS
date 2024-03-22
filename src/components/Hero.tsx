@@ -1,4 +1,5 @@
 import React from 'react';
+import bug from '../assets/Bugfixingamico.svg'
 
 const Hero: React.FC = () => {
     return (
@@ -14,16 +15,17 @@ const Hero: React.FC = () => {
               organization. Whether you're a customer service team, an IT department, or a project
               management team, having a robust ticket management system in place can significantly
               streamline your workflow and enhance productivity.
-              
+
             </p>
           </div>
           <div className="w-full md:w-1/2">
-            <img src='src/assets/Bugfixingamico.svg' className='w-custom-width' alt='bug' />
+            <img src={bug} className='w-custom-width' alt='bug' />
           </div>
         </div>
       </div>
       
       );
+      
       
 };
 
