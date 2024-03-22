@@ -113,16 +113,26 @@ const Login: React.FC<{}> = () => {
               streamline your workflow and enhance productivity.
             </p>
             <p>
-              Efficient ticket management is the cornerstone of effective operations for any
-              organization. .
+            Our system allows teams to prioritize and assign tickets, track their status in
+              real-time, and ensure timely resolution.
             </p>
+            <div className='flex flex-row mt-4  space-x-4'>
+              <div>
+              <p> Don't have an account ?</p>
+
+              </div>
+              <div>
             <button
               onClick={() => {
                 window.location.href = '/auth/signup';
               }}
-              className="bg-white text-blue-500 font-semibold px-4 py-2 mt-4 rounded hover:bg-gray-200">
+              className="bg-white text-blue-500 font-semibold px-4 py-2  rounded hover:bg-gray-200">
               Sign Up
             </button>
+
+              </div>
+
+            </div>
           </div>
         </div>
       </div>
