@@ -10,9 +10,21 @@ const Navbar: React.FC = () => {
   return (
     <>
       <nav className="bg-white shadow-md fixed top-0 left-0 w-full h-20 px-4 py-2 flex justify-between items-center md:h-20">
-        <a href="#" className="text-xl font-bold text-gray-800">
+        {/* <a href="#" className="text-xl font-bold text-gray-800">
           TICKET SYSTEM{' '}
-        </a>
+        </a> */}
+         <div className="mb-6 md:mb-0">
+              <a href="/" className="flex items-center">
+                <img
+                  src="https://flowbite.com/docs/images/logo.svg"
+                  className="h-8 me-3"
+                  alt="FlowBite Logo"
+                />
+                <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                  TICKET  SYSTEM
+                </span>
+              </a>  
+            </div>
 
         <button onClick={toggleMenu} className="menu-btn md:hidden focus:outline-none">
           <svg
@@ -87,7 +99,7 @@ const Navbar: React.FC = () => {
           </div>
         )}
       </nav>
-      {/* <Hero/> */}
+   
     </>
   );
 };
