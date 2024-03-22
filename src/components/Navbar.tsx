@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Hero from './Hero';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,7 +52,7 @@ const Navbar: React.FC = () => {
           </li>
           <li>
             <a href="#" className="text-gray-600 hover:text-gray-800">
-              Contact
+            Login
             </a>
           </li>
         </ul>
@@ -82,13 +83,14 @@ const Navbar: React.FC = () => {
               </li>
               <li>
                 <a href="#" className="text-gray-600 hover:text-gray-800">
-                  Contact
+                  Login
                 </a>
               </li>
             </ul>
           </div>
         )}
       </nav>
+      {/* <Hero/> */}
     </>
   );
 };
