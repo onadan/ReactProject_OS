@@ -36,7 +36,7 @@ const Navbar: React.FC = () => {
             />
           </svg>
         </button>
-        <ul className="hidden md:flex md:space-x-20">
+        <ul className="hidden md:flex  md:space-x-4">
           <li>
             <Link  to='/'className="text-gray-600 hover:text-gray-800">
               Home
