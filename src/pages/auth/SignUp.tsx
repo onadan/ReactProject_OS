@@ -46,7 +46,7 @@ const SignUp: React.FC<{}> = () => {
 
   return (
     <div className="container mx-auto px-4 items-center md:flex-row md:items-start flex flex-col mt-28  ">
-      <div className="w-full justify-center items-center mt-4 md:w-1/2 md:order-2">
+      <div className="w-full justify-center items-center mt-4 md:w-1/2 md:order-2 flex-grow">
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -124,8 +124,9 @@ const SignUp: React.FC<{}> = () => {
                 {errors.password && touched.password ? <div>{errors.password}</div> : null}
               </div>
 
+
               <button
-                className=" bg-blue-500 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-2"
+                className=" bg-blue-500 shadow appearance-none border rounded  w-full  justify-center py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mt-2"
                 type="submit"
                 disabled={isSubmitting}>
                 {loading ? 'Submitting...' : 'Submit'}
@@ -136,7 +137,7 @@ const SignUp: React.FC<{}> = () => {
       </div>
       <div className="w-full justify-center items-center mt-4 md:w-1/2 md:order-1">
         <div className=" bg-blue-500 shadow-md rounded px-12 text-white pb-16 mb-4">
-          <div className="  p-16">
+          <div className="  p-16 flex-grow" >
             <h4 className=" text-xl  font-bold "> Welcome to the best Ticketing system</h4>
             <p className="mt-4">
               Efficient ticket management is the cornerstone of effective operations for any

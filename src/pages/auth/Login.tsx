@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { ILogin, userLogin } from '../../redux/feature/auth/authActions';
 
@@ -42,6 +42,7 @@ const Login: React.FC<{}> = () => {
 
   return (
     <div className="container mx-auto px-4 items-center md:flex-row md:items-start flex flex-col mt-28  ">
+
       <div className="w-full justify-center items-center mt-4 md:w-1/2 md:order-2">
         <Formik
           initialValues={initialValues}
@@ -103,7 +104,9 @@ const Login: React.FC<{}> = () => {
         </Formik>
       </div>
       <div className="w-full justify-center items-center mt-4 md:w-1/2 md:order-1">
-        <div className=" bg-blue-500 shadow-md rounded px-12 text-white     pb-16 mb-4">
+      
+        <div className=" bg-blue-500 shadow-md rounded px-12 text-white pb-16 mb-4">
+          
           <div className=" p-3">
             <h4 className=" text-xl  font-bold "> Welcome to the best Ticketing system</h4>
             <p className="mt-4">
@@ -112,7 +115,7 @@ const Login: React.FC<{}> = () => {
               management team, having a robust ticket management system in place can significantly
               streamline your workflow and enhance productivity.
             </p>
-            <p>
+            <p className='mt-4'>
             Our system allows teams to prioritize and assign tickets, track their status in
               real-time, and ensure timely resolution.
             </p>
